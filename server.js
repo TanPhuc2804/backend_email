@@ -6,8 +6,14 @@ const cors = require('cors');
 const app = express();
 
 // Middleware
-app.use(cors());
-app.use(express.json()); // Để server đọc được JSON từ request body
+const corsOptions = {
+    origin: 'https://4anni-final.vercel.app', // Thay bằng domain frontend của bạn (Lưu ý: Không có dấu gạch chéo / ở cuối)
+    methods: ['POST', 'GET', 'OPTIONS'],      // Các phương thức được phép
+    allowedHeaders: ['Content-Type']
+};
+
+app.use(cors(corsOptions));
+app.use(express.json());
 
 // Cấu hình Nodemailer transporter
 const transporter = nodemailer.createTransport({
@@ -20,7 +26,7 @@ const transporter = nodemailer.createTransport({
 
 // API endpoint để gửi email
 app.post('/api/send-email', async (req, res) => {
-   const { text } = req.body;
+    const { text } = req.body;
 
     if (!text) {
         return res.status(400).json({ error: 'Vui lòng nhập nội dung trước khi gửi!' });
