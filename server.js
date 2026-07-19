@@ -7,7 +7,7 @@ const app = express();
 
 // Middleware
 const corsOptions = {
-    origin: 'https://4anni-final-h.vercel.app/', // Thay bằng domain frontend của bạn (Lưu ý: Không có dấu gạch chéo / ở cuối)
+    origin: 'https://4anni-final-h.vercel.app', // Thay bằng domain frontend của bạn (Lưu ý: Không có dấu gạch chéo / ở cuối)
     methods: ['POST', 'GET', 'OPTIONS'],      // Các phương thức được phép
     allowedHeaders: ['Content-Type']
 };
